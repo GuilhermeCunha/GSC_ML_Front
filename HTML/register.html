@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>GSC</title>
+
+
+    <!--CSS-->
+    <link rel="stylesheet" type="text/css" href="./res/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./res/css/register.css">
+
+    <!--JS-->
+    <script src="./res/bootstrap/js/bootstrap.min.js"></script>
+
+    <!--ICONS-->
+    <link rel="stylesheet" type="text/css" href="./res/font-awesome/css/all.css">
+    <script src="./res/font-awesome/js/all.js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+                <div class="card card-signin my-5">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Registro</h5>
+                        <form class="form-signin" method="POST" action="/">
+
+                            <div class="form-label-group">
+                                <input type="email" id="email" class="form-control" placeholder="Email" required autofocus>
+                                <label for="email">Email</label>
+                            </div>
+
+                            <div class="form-label-group">
+                                <input type="text" id="nickname" name="nickname" class="form-control" placeholder="Nickname" required autofocus>
+                                <label for="nickname">Apelido</label>
+                            </div>
+
+                            <div class="form-label-group">
+                                <input type="password" id="password" class="form-control" placeholder="Password" required>
+                                <label for="password">Senha</label>
+                            </div>
+                            <button id="btnLogin" class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Registrar</button>
+                            <hr>
+
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <p class="link text-center">
+                                            Já tem uma conta?
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 text-center">
+                                        <a class="" href="#paralogin">Login</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+body {
+    /*background-color: #f8f7f7c7;*/
+}
+
+#navbar {
+    color: white;
+    background-color: #b21aee!important;
+}
+
+.navbar-brand {
+    color: red;
+}
+
+.nav-link {
+    color: white !important;
+}
+
+#navbar-home {
+    color: white;
+}
+
+#footer-wpp-icon {
+    color: white;
+}
+
+#footer-email-icon {
+    color: white;
+}
+
+.text-muted {
+    color: white !important;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #b21aee!important;
+}
+
+@media only screen and (max-width: 768px) {
+    .footer {
+        display: none;
+    }
+    /* For mobile phones: */
+    [class*="col-"] {
+        width: 100%;
+    }
+}
