@@ -1,5 +1,9 @@
 body {
-    /*background-color: #f8f7f7c7;*/
+    height: 100%;
+    margin: 0;
+    background-image: linear-gradient(white, #f7e4ff)!important;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 #navbar {

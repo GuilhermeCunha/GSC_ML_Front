@@ -1,10 +1,11 @@
-body {
+
+/*body {
     height: 100%;
     margin: 0;
-    background-image: linear-gradient(#b21aee, #8101b4);
+    background-image: linear-gradient(#b21aee, #8101b4)!important;
     background-repeat: no-repeat;
     background-attachment: fixed;
-}
+}*/
 
 :root {
     --input-padding-x: 1.5rem;

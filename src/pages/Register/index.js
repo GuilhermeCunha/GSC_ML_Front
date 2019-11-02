@@ -7,7 +7,7 @@ import '.././res/css/_layout.css'
 import './register.css'
 
 
-function Register() {
+function Register({ history }) {
     const [email, setEmail] = useState('');
     const [nickname, setNickname] = useState('');
     const [password, setPassword] = useState('');
@@ -16,15 +16,17 @@ function Register() {
   
     async function handleSubmit(event) {
       event.preventDefault();
-        /*
-      const response = await api.post('/login', {
-        email: email,
-        password: password
-      });*/
-      console.log("Submit");
-      console.log(email);
-      console.log(password);
-      console.log(nickname);
+        
+      await api.post('/register-user', {
+          email,
+          nickname,
+          password,
+      }).then(function(result){
+          console.log('Criado');
+          history.push('/login');
+      }).catch(e => {
+          console.log(e);
+      });
 
     }
   return (

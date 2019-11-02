@@ -1,0 +1,13 @@
+.pt-3-half {
+    padding-top: 1.4rem;
+}
+#add-icon{
+    margin-bottom: 10px;
+    color: rgb(1, 121, 1);
+}
+#add-icon:hover {
+    color: rgb(0, 54, 0);
+}
+#remove-icon{
+    color: rgb(114, 0, 0);
+}

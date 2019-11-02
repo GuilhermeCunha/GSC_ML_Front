@@ -1,14 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import api from '../../services/api'
+import Alert from 'react-bootstrap/Alert';
+
+//import Alert from '@bit/react-bootstrap.react-bootstrap.alert'
 
 //_Layout CSS
 import '.././res/css/_layout.css'
 import './login.css'
-import { login } from "../../services/auth";
+import { login, isAuthenticated, logout } from "../../services/auth";
 
 
-function Login() {
+function Login({ history }) {
+  if(isAuthenticated())logout();
+    
+  
+  /*
+useEffect(() => {
+
+}, []);
+*/
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -19,17 +30,21 @@ function Login() {
     const response = await api.post('/login', {
       email: email,
       password: password
-    });
+    }).then(function(result){
+      localStorage.setItem('@id', result.data.data.id);
+      localStorage.setItem('@email', result.data.data.email);
+      localStorage.setItem('@nickname', result.data.data.nickname);
+      login(result.data.token);
+      console.log(result);
+      history.push('/products');
+    }).catch(function(err){
+      console.log(err);
+    })
 
-    localStorage.setItem('@id', response.data.data.id);
-    localStorage.setItem('@email', response.data.data.email);
-    localStorage.setItem('@nickname', response.data.data.nickname);
-    login(response.data.token);
     
-    console.log(response);
-    console.log("Clicou");
   }
   return (
+    <>
     <div className="container">
       <div className="row">
         <div className="col-sm-9 col-md-7 col-lg-5 mx-auto">
@@ -75,7 +90,7 @@ function Login() {
                   </div>
                   <div className="row">
                     <div className="col-12 text-center">
-                      <a className="" href="#paracadastro">Cadastre-se</a>
+                      <a className="" href="/register">Cadastre-se</a>
                     </div>
                   </div>
                 </div>
@@ -86,6 +101,7 @@ function Login() {
         </div>
       </div>
     </div>
+    </>
   );
 }
 
