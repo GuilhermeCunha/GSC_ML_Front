@@ -5,6 +5,7 @@ import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Products from './pages/Products';
+import Authentification from './pages/Authentification';
 
 
 import { isAuthenticated } from "./services/auth";
@@ -30,6 +31,7 @@ export default function Routes(){
                 <Route path="/login" exact component={Login}/>
                 <Route path="/register" exact component={Register}/>
                 <PrivateRoute path="/products" exact component={Products}/>
+                <PrivateRoute path="/mercadolivre/auth" exact component={Authentification}/>
             </Switch>
         </BrowserRouter>
     );

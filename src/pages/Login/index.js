@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import api from '../../services/api'
 
@@ -28,7 +28,7 @@ useEffect(() => {
   async function handleSubmit(event) {
     event.preventDefault();
 
-    const response = await api.post('/login', {
+    await api.post('/login', {
       email: email,
       password: password
     }).then(function(result){
@@ -37,10 +37,29 @@ useEffect(() => {
       localStorage.setItem('@nickname', result.data.data.nickname);
       login(result.data.token);
       console.log(result);
-      history.push('/products');
+      api.post('/auth/mercadolivre/isAuthenticated', {
+        id: localStorage.getItem('@id'),
+      }, {
+        headers:{
+          'x-access-token': localStorage.getItem('@token')
+        }
+      }).then(result =>{
+        console.log(result);
+        if(result.data.message){
+          history.push('/products');
+        }else{
+          history.push('/mercadolivre/auth');
+        }
+      }).catch(e =>{
+        console.log(e);
+      });
+      
     }).catch(function(err){
       console.log(err);
-    })
+    });
+      
+    
+    
 
     
   }

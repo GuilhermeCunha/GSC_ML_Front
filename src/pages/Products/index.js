@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import api from '../../services/api'
-import Editable from 'react-x-editable';
 import Table from 'react-bootstrap/Table'
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
@@ -62,7 +61,7 @@ function Login() {
 
     useEffect(() => {
         async function loadProducts() {
-            const response = await api.post('/products', {
+            await api.post('/products', {
                 token: localStorage.getItem("@token"),
             }, {}).then(function (result) {
                 setProducts(result.data);
