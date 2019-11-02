@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import api from '../../services/api'
+import Helmet from 'react-helmet'
 
 
 //import Alert from '@bit/react-bootstrap.react-bootstrap.alert'
@@ -13,6 +14,7 @@ import { login, isAuthenticated, logout } from "../../services/auth";
 
 
 function Login({ history }) {
+  
   if(isAuthenticated())logout();
     
   
@@ -65,6 +67,22 @@ useEffect(() => {
   }
   return (
     <>
+     <div className="Login">
+            <Helmet>
+                <meta charSet="utf-8" />
+                <meta property="og:locale" content="pt_BR"></meta>
+                <meta property="og:site_name" content="GSC ML"></meta>
+                <title>My Title</title>
+                <link rel="canonical" href="https://gscmlfront.herokuapp.com" />
+                <meta property="og:url" content="https://gscmlfront.herokuapp.com"/>
+                <meta property="og:type" content="website"/>
+                <meta property="og:image" content="https://i.imgur.com/TQclvhy.jpg"/>
+                <meta property="og:image:type" content="image/jpeg"/>
+                <meta property="og:image:width" content="800"/>
+                <meta property="og:image:height" content="600"/>
+                <meta property="" content="site de Guilherme"/>
+            </Helmet>
+        </div>
 
     <div className="container">
       <div className="row">
