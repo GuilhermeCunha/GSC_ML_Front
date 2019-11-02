@@ -14,10 +14,10 @@ import { login, isAuthenticated, logout } from "../../services/auth";
 
 
 function Login({ history }) {
-  
-  if(isAuthenticated())logout();
-    
-  
+
+  if (isAuthenticated()) logout();
+
+
   /*
 useEffect(() => {
 
@@ -33,7 +33,7 @@ useEffect(() => {
     await api.post('/login', {
       email: email,
       password: password
-    }).then(function(result){
+    }).then(function (result) {
       localStorage.setItem('@id', result.data.data.id);
       localStorage.setItem('@email', result.data.data.email);
       localStorage.setItem('@nickname', result.data.data.nickname);
@@ -42,104 +42,105 @@ useEffect(() => {
       api.post('/auth/mercadolivre/isAuthenticated', {
         id: localStorage.getItem('@id'),
       }, {
-        headers:{
+        headers: {
           'x-access-token': localStorage.getItem('@token')
         }
-      }).then(result =>{
+      }).then(result => {
         console.log(result);
-        if(result.data.message){
+        if (result.data.message) {
           history.push('/products');
-        }else{
+        } else {
           history.push('/mercadolivre/auth');
         }
-      }).catch(e =>{
+      }).catch(e => {
         console.log(e);
       });
-      
-    }).catch(function(err){
+
+    }).catch(function (err) {
       console.log(err);
     });
-      
-    
-    
 
-    
+
+
+
+
   }
   return (
     <>
-     <div className="Login">
-            <Helmet>
-                <meta charSet="utf-8" />
-                <meta property="og:locale" content="pt_BR"></meta>
-                <meta property="og:site_name" content="GSC ML"></meta>
-                <title>My Title</title>
-                <link rel="canonical" href="https://gscmlfront.herokuapp.com" />
-                <meta property="og:url" content="https://gscmlfront.herokuapp.com"/>
-                <meta property="og:type" content="website"/>
-                <meta property="og:image" content="https://i.imgur.com/TQclvhy.jpg"/>
-                <meta property="og:image:type" content="image/jpeg"/>
-                <meta property="og:image:width" content="800"/>
-                <meta property="og:image:height" content="600"/>
-                <meta property="" content="site de Guilherme"/>
-            </Helmet>
-        </div>
+      <div className="Login">
+        <Helmet>
+          <meta property="og:locale" content="pt_BR" />
 
-    <div className="container">
-      <div className="row">
-        <div className="col-sm-9 col-md-7 col-lg-5 mx-auto">
-          <div className="card card-signin my-5">
-            <div className="card-body">
-              <h5 className="card-title text-center">Login</h5>
-              <form className="form-signin" onSubmit={handleSubmit}>
+          <meta property="og:url" content="https://gscmlfront.herokuapp.com" />
 
-                <div className="form-label-group">
-                  <input type="email"
-                    id="email"
-                    className="form-control"
-                    placeholder="Email address"
-                    value={email}
-                    onChange={event => setEmail(event.target.value)}
-                    required
-                    autoFocus
-                  />
-                  <label htmlFor="email">Email</label>
-                </div>
+          <meta property="og:title" content="Login" />
+          <meta property="og:site_name" content="GSC ML" />
+          <meta property="og:description" content="Minha boa descrição para intrigar os usuários." />
 
-                <div className="form-label-group">
-                  <input type="password"
-                    id="password"
-                    className="form-control"
-                    placeholder="Password"
-                    value={password}
-                    onChange={event => setPassword(event.target.value)}
-                    required />
-                  <label htmlFor="password">Senha</label>
-                </div>
-                <button id="btnLogin" className="btn btn-lg btn-primary btn-block text-uppercase"
-                  type="submit">Login</button>
-                <hr />
+          <meta property="og:image" content="https://i.imgur.com/TQclvhy.jpg" />
+          <meta property="og:image:type" content="image/jpeg" />
+          <meta property="og:image:width" content="800" />
+          <meta property="og:image:height" content="600" />
+          <meta property="og:type" content="website" />
+        </Helmet>
+      </div>
 
-                <div className="container">
-                  <div className="row">
-                    <div className="col-12">
-                      <p className="link text-center">
-                        Ainda não tem conta?
+      <div className="container">
+        <div className="row">
+          <div className="col-sm-9 col-md-7 col-lg-5 mx-auto">
+            <div className="card card-signin my-5">
+              <div className="card-body">
+                <h5 className="card-title text-center">Login</h5>
+                <form className="form-signin" onSubmit={handleSubmit}>
+
+                  <div className="form-label-group">
+                    <input type="email"
+                      id="email"
+                      className="form-control"
+                      placeholder="Email address"
+                      value={email}
+                      onChange={event => setEmail(event.target.value)}
+                      required
+                      autoFocus
+                    />
+                    <label htmlFor="email">Email</label>
+                  </div>
+
+                  <div className="form-label-group">
+                    <input type="password"
+                      id="password"
+                      className="form-control"
+                      placeholder="Password"
+                      value={password}
+                      onChange={event => setPassword(event.target.value)}
+                      required />
+                    <label htmlFor="password">Senha</label>
+                  </div>
+                  <button id="btnLogin" className="btn btn-lg btn-primary btn-block text-uppercase"
+                    type="submit">Login</button>
+                  <hr />
+
+                  <div className="container">
+                    <div className="row">
+                      <div className="col-12">
+                        <p className="link text-center">
+                          Ainda não tem conta?
                                         </p>
+                      </div>
+                    </div>
+                    <div className="row">
+                      <div className="col-12 text-center">
+                        <a className="" href="/register">Cadastre-se</a>
+                      </div>
                     </div>
                   </div>
-                  <div className="row">
-                    <div className="col-12 text-center">
-                      <a className="" href="/register">Cadastre-se</a>
-                    </div>
-                  </div>
-                </div>
 
-              </form>
+                </form>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
     </>
   );
 }
