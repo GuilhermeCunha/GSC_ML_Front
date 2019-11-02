@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import api from '../../services/api'
-import Alert from 'react-bootstrap/Alert';
+
 
 //import Alert from '@bit/react-bootstrap.react-bootstrap.alert'
 
@@ -9,6 +9,7 @@ import Alert from 'react-bootstrap/Alert';
 import '.././res/css/_layout.css'
 import './login.css'
 import { login, isAuthenticated, logout } from "../../services/auth";
+
 
 
 function Login({ history }) {
@@ -45,6 +46,7 @@ useEffect(() => {
   }
   return (
     <>
+
     <div className="container">
       <div className="row">
         <div className="col-sm-9 col-md-7 col-lg-5 mx-auto">

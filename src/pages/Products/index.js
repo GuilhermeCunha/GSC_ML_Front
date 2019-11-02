@@ -130,8 +130,6 @@ function Login() {
                                 aria-hidden="true"
                                 data-toggle="modal" data-target="#modal-remove"
                                 onClick={() => setItem_id(product.item_id)}></i></td>
-
-                                
                             </tr>
                         ))}
                     </tbody>
