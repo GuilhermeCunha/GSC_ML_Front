@@ -176,7 +176,7 @@ function Login() {
                                 <label htmlFor="ID do Anúncio">ID do Anúncio</label>
                                 <input type="text"
                                     className="form-control"
-                                    placeholder="MB12345678"
+                                    placeholder="MLB-1353694658"
                                     value={item_id}
                                     onChange={event => setItem_id(event.target.value)} />
                             </div>
