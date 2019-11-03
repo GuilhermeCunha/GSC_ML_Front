@@ -75,7 +75,7 @@ useEffect(() => {
 
           <meta property="og:title" content="Login" />
           <meta property="og:site_name" content="GSC ML" />
-          <meta property="og:description" content="Minha boa descrição para intrigar os usuários." />
+          <meta property="og:description" content="Gerencidor do Mercado Livre" />
 
           <meta property="og:image" content="https://i.imgur.com/TQclvhy.jpg" />
           <meta property="og:image:type" content="image/jpeg" />
