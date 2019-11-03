@@ -67,23 +67,6 @@ useEffect(() => {
   }
   return (
     <>
-      <div className="Login">
-        <Helmet>
-          <meta property="og:locale" content="pt_BR" />
-
-          <meta property="og:url" content="https://gscmlfront.herokuapp.com" />
-
-          <meta property="og:title" content="Login" />
-          <meta property="og:site_name" content="GSC ML" />
-          <meta property="og:description" content="Gerencidor do Mercado Livre" />
-
-          <meta property="og:image" content="https://i.imgur.com/TQclvhy.jpg" />
-          <meta property="og:image:type" content="image/jpeg" />
-          <meta property="og:image:width" content="800" />
-          <meta property="og:image:height" content="600" />
-          <meta property="og:type" content="website" />
-        </Helmet>
-      </div>
 
       <div className="container">
         <div className="row">
