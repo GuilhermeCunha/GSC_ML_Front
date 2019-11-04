@@ -60,6 +60,7 @@ function Login() {
     }
 
     useEffect(() => {
+        
         async function loadProducts() {
             await api.post('/products', {
                 token: localStorage.getItem("@token"),
@@ -70,7 +71,27 @@ function Login() {
                 console.log(e);
             })
         }
-        loadProducts();
+
+        async function verifyOrRefreshMLToken(){
+            var tokenIsValid = await api.post('/verify-or-refresh-ml-token', {
+                email: localStorage.getItem("@email"),
+            }, {
+                headers:{
+                    'x-access-token': localStorage.getItem("@token")
+                }
+            }).then(function (result) {
+                return result.data.tokenIsValid;
+            }).catch(e => {
+                console.log(e);
+            });
+            if(tokenIsValid){
+                loadProducts();
+            }else{
+                console.log("Algum erro aconteceu na verificação ou refresh do token!");
+            }
+            
+        }
+        verifyOrRefreshMLToken();
     }, []);
     /*
   const [email, setEmail] = useState('');
