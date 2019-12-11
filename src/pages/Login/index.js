@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import api from '../../services/api'
-import Helmet from 'react-helmet'
 
 
 //import Alert from '@bit/react-bootstrap.react-bootstrap.alert'
@@ -67,7 +66,6 @@ useEffect(() => {
   }
   return (
     <>
-
       <div className="container">
         <div className="row">
           <div className="col-sm-9 col-md-7 col-lg-5 mx-auto">
