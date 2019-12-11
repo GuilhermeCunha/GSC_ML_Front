@@ -23,10 +23,10 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
   />
 );
 
-const AdminRoute = ({ component: Component, ...rest }) => (
+const AdminRoute =({ component: Component, ...rest }) => (
   <Route
     {...rest}
-    render={props =>
+    render= {props =>
       isAdmin() ? (
         <Component {...props} />
       ) : (
@@ -42,7 +42,7 @@ export default function Routes(){
             <Switch>
                 <Route path="/login" exact component={Login}/>
                 <Route path="/" exact component={Login}/>
-                <AdminRoute path="/register" exact component={Register}/>
+                <AdminRoute async path="/register" exact component={Register}/>
                 <PrivateRoute path="/products" exact component={Products}/>
                 <PrivateRoute path="/mercadolivre/auth" exact component={Authentification}/>
             </Switch>

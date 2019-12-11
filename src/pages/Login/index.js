@@ -8,13 +8,29 @@ import api from '../../services/api'
 //_Layout CSS
 import '.././res/css/_layout.css'
 import './login.css'
-import { login, isAuthenticated, logout } from "../../services/auth";
+import { login, logout, ISADMIN_KEY, TOKEN_KEY, ID_KEY } from "../../services/auth";
 
+async function verifyAdmin(email){
+
+  var isAdmin = await api.post('/isAdmin', {email}, {
+    headers: {
+      'x-access-token': localStorage.getItem(TOKEN_KEY)
+    }
+  }).then(result => {
+    return result.data.isAdmin
+  }).catch(e => {
+    console.log("Erro em verificar se " + email + " é admin")
+  });
+  
+  if(isAdmin){
+    console.log("is admin")
+    localStorage.setItem(ISADMIN_KEY, 's');
+  }
+}
 
 
 function Login({ history }) {
-
-  if (isAuthenticated()) logout();
+  logout();
 
 
   /*
@@ -28,21 +44,23 @@ useEffect(() => {
 
   async function handleSubmit(event) {
     event.preventDefault();
-
+    
     await api.post('/login', {
       email: email,
       password: password
     }).then(function (result) {
-      localStorage.setItem('@id', result.data.data.id);
-      localStorage.setItem('@email', result.data.data.email);
-      localStorage.setItem('@nickname', result.data.data.nickname);
-      login(result.data.token);
-      console.log(result);
+      login({
+        token: result.data.token,
+        id: result.data.data.id,
+        email: result.data.data.email,
+        nickname: result.data.data.nickname
+      });
+      verifyAdmin(email);
       api.post('/auth/mercadolivre/isAuthenticated', {
-        id: localStorage.getItem('@id'),
+        id: localStorage.getItem(ID_KEY),
       }, {
         headers: {
-          'x-access-token': localStorage.getItem('@token')
+          'x-access-token': localStorage.getItem(TOKEN_KEY)
         }
       }).then(result => {
         console.log(result);
@@ -56,7 +74,7 @@ useEffect(() => {
       });
 
     }).catch(function (err) {
-      console.log(err);
+      console.log("Credenciais incorretas")
     });
 
 
