@@ -1,6 +1,25 @@
 import React from 'react';
 
 function Navbar() {
+    var botaoRegistrar;
+    var botaoGerenciar;
+    if(localStorage.getItem("@email") === "gscdevelops@gmail.com"){
+        botaoRegistrar = (
+            <li className="nav-item active">
+                <a className="nav-link" href="/register">Registrar <span className="sr-only">(Página atual)</span></a>
+            </li>
+            
+        );
+        botaoGerenciar = (
+            <li className="nav-item active">
+                <a className="nav-link" href="/users">Gerenciar <span className="sr-only">(Página atual)</span></a>
+            </li>
+        );
+    }else{
+        botaoRegistrar = "";
+        botaoGerenciar = "";
+    }
+    
     return (
         <nav id="navbar" className="navbar navbar-expand-lg navbar-light bg-light">
             <a id="navbar-home" href="#"><i className="fa fa-home" aria-hidden="true"></i></a>
@@ -14,6 +33,9 @@ function Navbar() {
                     <li className="nav-item active">
                         <a className="nav-link" href="/products">Home <span className="sr-only">(Página atual)</span></a>
                     </li>
+                    
+                   {botaoRegistrar}
+                   {botaoGerenciar}
                     
                 </ul>
                 <ul className="navbar-nav">

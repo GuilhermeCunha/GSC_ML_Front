@@ -5,7 +5,7 @@ import Table from 'react-bootstrap/Table'
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
 import Navbar from '../Navbar'
-
+import Footer from '../Footer'
 
 //_Layout CSS
 import '.././res/css/_layout.css'
@@ -91,7 +91,7 @@ function Login() {
                 token: localStorage.getItem("@token"),
             }, {}).then(function (result) {
                 setProducts(result.data);
-                console.log(result);
+                //console.log(result);
             }).catch(e => {
                 console.log(e);
             })
@@ -227,7 +227,7 @@ function Login() {
                     </div>
                 </div>
             </div>
-
+            <Footer/>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
                     <div className="col-12 text-center">
@@ -355,6 +355,8 @@ function Login() {
                     </div>
                 </div>
             </div>
+
+            
         </>
     );
 }
