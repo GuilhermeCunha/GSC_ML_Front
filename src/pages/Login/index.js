@@ -3,12 +3,11 @@ import 'bootstrap/dist/css/bootstrap.css';
 import api from '../../services/api'
 
 
-//import Alert from '@bit/react-bootstrap.react-bootstrap.alert'
-
 //_Layout CSS
 import '.././res/css/_layout.css'
 import './login.css'
 import { login, logout, ISADMIN_KEY, TOKEN_KEY, ID_KEY } from "../../services/auth";
+
 
 async function verifyAdmin(email){
 
