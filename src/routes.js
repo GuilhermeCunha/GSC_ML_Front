@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 
 
 import Login from './pages/Login';
+import NotFound from './pages/NotFound';
 import Register from './pages/Register';
 import Products from './pages/Products';
 import Authentification from './pages/Authentification';
@@ -45,6 +46,7 @@ export default function Routes(){
                 <AdminRoute async path="/register" exact component={Register}/>
                 <PrivateRoute path="/products" exact component={Products}/>
                 <PrivateRoute path="/mercadolivre/auth" exact component={Authentification}/>
+                <Route path="*" component={NotFound}/>
             </Switch>
         </BrowserRouter>
     );
