@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import api from '../../services/api'
-
+import { EMAIL_KEY, TOKEN_KEY, ID_KEY } from "../../services/auth";
 
 //import Alert from '@bit/react-bootstrap.react-bootstrap.alert'
 
@@ -16,17 +16,19 @@ useEffect(() => {
       let params = new URLSearchParams(search);
       var code = params.get('code');
       if(code != null){
-        api.post('/auth/mercadolivre/authenticate', {
+        await api.post('/auth/mercadolivre/authenticate', {
           code,
-          email: localStorage.getItem('@email')
+          email: localStorage.getItem(EMAIL_KEY)
         },{
           headers:{
-            'x-access-token':localStorage.getItem('@token')
+            'x-access-token':localStorage.getItem(TOKEN_KEY)
           }
         }).then(function(result){
           console.log("Sucesso!");
           history.push('/products')
         }).catch(e =>{
+          console.log("Erro na chamada do authenticate")
+          console.log(code + localStorage.getItem(EMAIL_KEY))
           console.log(e);
         })
       }
@@ -43,7 +45,6 @@ useEffect(() => {
     }).catch(e=>{
       console.log(e);
     });
-    console.log("Clicou");
   }
 
   return (
