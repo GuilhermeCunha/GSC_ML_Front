@@ -1,17 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
+
 import api from '../../services/api'
 import Table from 'react-bootstrap/Table'
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
 import Navbar from '../Navbar'
 import Footer from '../Footer'
+import { EMAIL_KEY, TOKEN_KEY, ID_KEY } from "../../services/auth";
 
 //_Layout CSS
 import '.././res/css/_layout.css'
 import './index.css'
 
 function Login() {
+
     const [products, setProducts] = useState([]);
     const [show, setShow] = useState(false);
     const [item_id, setItem_id] = useState('');
@@ -28,13 +31,13 @@ function Login() {
         console.log(message)
 
         await api.post('/products/edit', {
-            email: localStorage.getItem('@email'),
+            email: localStorage.getItem(EMAIL_KEY),
             item_id,
             message,
             title,
         }, {
             headers: {
-                'x-access-token': localStorage.getItem('@token'),
+                'x-access-token': localStorage.getItem(TOKEN_KEY),
             }
         }).then(function (result) {
             console.log("Editado");
@@ -285,9 +288,13 @@ function Login() {
                         <div className="modal-body">
                             <div className="container">
                                 <div className="row">
+                                    {/* A JSX comment 
                                     <div className="col-12 text-center">
                                         <textarea defaultValue= {message} type="text" rows="20" cols = "100" readOnly></textarea>
                                     </div>
+                                    */}
+                                    <div  dangerouslySetInnerHTML={{__html: message}} />
+                                    
                                 </div>
                             </div>
                         </div>
@@ -327,7 +334,8 @@ function Login() {
                                         <input type="text"
                                             className="form-control"
                                             defaultValue= {item_id}
-                                            onChange={event => setItem_id(event.target.value)} />
+                                            onChange={event => setItem_id(event.target.value)} 
+                                            readOnly/>
                                     </div>
                                 </div>
                                 <div className="row">
