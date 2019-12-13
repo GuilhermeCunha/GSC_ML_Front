@@ -120,6 +120,7 @@ useEffect(() => {
                   </div>
                   <button id="btnLogin" className="btn btn-lg btn-primary btn-block text-uppercase"
                     type="submit">Login</button>
+                    {/*
                   <hr />
 
                   <div className="container">
@@ -136,7 +137,7 @@ useEffect(() => {
                       </div>
                     </div>
                   </div>
-
+                  */}
                 </form>
               </div>
             </div>
