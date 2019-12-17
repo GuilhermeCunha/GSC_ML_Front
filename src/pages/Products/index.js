@@ -358,7 +358,7 @@ function Login() {
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                            <button type="button" className="btn btn-danger" onClick={handleEditSubmit}> Remover</button>
+                            <button type="button" className="btn btn-success" onClick={handleEditSubmit}> Editar</button>
                         </div>
                     </div>
                 </div>
