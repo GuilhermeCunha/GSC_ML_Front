@@ -30,7 +30,7 @@ function Login() {
         console.log(item_id);
         console.log(message)
 
-        await api.post('/products/edit', {
+        await api.put('/products', {
             email: localStorage.getItem(EMAIL_KEY),
             item_id,
             message,
@@ -49,7 +49,7 @@ function Login() {
 
     }
     async function handleRemoveSubmit(event) {
-        await api.post('/products/remove', {
+        await api.delete('/products', {
             email: localStorage.getItem('@email'),
             item_id,
         }, {
@@ -66,7 +66,7 @@ function Login() {
     }
 
     async function handleRegisterSubmit(event) {
-        await api.post('/products/register', {
+        await api.post('/products', {
             email: localStorage.getItem('@email'),
             item_id,
             message,
@@ -90,8 +90,8 @@ function Login() {
     useEffect(() => {
 
         async function loadProducts() {
-            await api.post('/products', {
-                token: localStorage.getItem("@token"),
+            await api.post('/listProducts' , {
+                token: localStorage.getItem("@token")
             }, {}).then(function (result) {
                 setProducts(result.data);
                 //console.log(result);

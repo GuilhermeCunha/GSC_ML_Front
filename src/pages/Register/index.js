@@ -26,7 +26,7 @@ function Register({ history }) {
         let endDate = await calcEndDate(paidDays);
         console.log("endDate: " + endDate);
         
-        await api.post('/register-user', {
+        await api.post('/user', {
             email,
             password,
             access_expires_at: endDate,
